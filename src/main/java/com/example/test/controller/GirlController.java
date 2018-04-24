@@ -4,8 +4,10 @@ import com.example.test.domain.Girl;
 import com.example.test.repository.GirlRepository;
 import com.example.test.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,17 +29,16 @@ public class GirlController {
     }
     /**
      * 添加一个女生
-     * @param name
-     * @param cupSize
      * @return
      */
     @PostMapping(value="girls")
-    public Girl girlAdd(@RequestParam("name") String name,
-                          @RequestParam("cupSize") String cupSize){
-        Girl girl=new Girl();
-        girl.setId(3);
-        girl.setName(name);
-        girl.setCupSize(cupSize);
+    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            System.out.printf(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+        girl.setName(girl.getName());
+        girl.setCupSize(girl.getCupSize());
         return girlRepository.save(girl);
     }
 
