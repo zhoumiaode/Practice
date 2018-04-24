@@ -1,5 +1,7 @@
-package com.example.test;
+package com.example.test.service;
 
+import com.example.test.domain.Girl;
+import com.example.test.repository.GirlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,5 +1,8 @@
-package com.example.test;
+package com.example.test.controller;
 
+import com.example.test.domain.Girl;
+import com.example.test.repository.GirlRepository;
+import com.example.test.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
