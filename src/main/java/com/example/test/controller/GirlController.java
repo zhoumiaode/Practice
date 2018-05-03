@@ -1,8 +1,10 @@
 package com.example.test.controller;
 
 import com.example.test.domain.Girl;
+import com.example.test.domain.Result;
 import com.example.test.repository.GirlRepository;
 import com.example.test.service.GirlService;
+import com.example.test.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -32,14 +34,16 @@ public class GirlController {
      * @return
      */
     @PostMapping(value="girls")
-    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult){
+    public Object girlAdd(@Valid Girl girl, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            System.out.printf(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            Result result=new Result();
+            result.setCode(1);
+            result.setMsg(bindingResult.getFieldError().getDefaultMessage());
+            return ResultUtil.error(1,bindingResult.getFieldError().getDefaultMessage());
         }
         girl.setName(girl.getName());
         girl.setCupSize(girl.getCupSize());
-        return girlRepository.save(girl);
+        return ResultUtil.Success(girl);
     }
 
     @GetMapping(value="FindById/{id}")
@@ -74,5 +78,12 @@ public class GirlController {
     public void insertTwo(){
 
         girlService.insertTwo();
+    }
+
+
+    @GetMapping(value="girls/age/{id}")
+    public void  getAge(@PathVariable(value = "id") Integer id)throws Exception{
+        girlService.getAge(id);
+
     }
 }

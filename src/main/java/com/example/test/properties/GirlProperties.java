@@ -6,7 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "girl")
+@ConfigurationProperties(prefix = "" +
+        "")
 public class GirlProperties {
 
     private String cupSize;
@@ -38,5 +39,14 @@ public class GirlProperties {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "GirlProperties{" +
+                "cupSize='" + cupSize + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
