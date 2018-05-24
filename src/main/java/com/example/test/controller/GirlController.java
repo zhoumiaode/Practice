@@ -6,9 +6,13 @@ import com.example.test.repository.GirlRepository;
 import com.example.test.service.GirlService;
 import com.example.test.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -26,7 +30,11 @@ public class GirlController {
      * @return
      */
     @GetMapping(value="girls")
-    public List<Girl> girlList() {
+    public List<Girl> girlList(HttpServletRequest heq, ModelMap model) {
+        HttpSession he=heq.getSession();
+        System.out.println(he.getAttribute("name"));
+        System.out.println("---"+model.get("name"));
+/*        System.out.println("!!!"+binder.getFieldMarkerPrefix());*/
         return girlRepository.findAll();
     }
     /**
@@ -53,7 +61,9 @@ public class GirlController {
     }
 
     @PutMapping(value="update")
-    public Girl updateGirl(){
+    public Girl updateGirl(HttpServletRequest heq){
+        HttpSession se=heq.getSession();
+        se.setAttribute("name","jack");
         Girl girl=new Girl();
         girl.setId(3);
         girl.setCupSize("33");
@@ -70,6 +80,7 @@ public class GirlController {
 
     @GetMapping(value="girls/{name}")
     public List<Girl> findByName(@PathVariable("name")String name){
+
 
         return girlRepository.findByName(name);
     }

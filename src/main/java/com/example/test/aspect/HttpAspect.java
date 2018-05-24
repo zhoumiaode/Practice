@@ -36,6 +36,15 @@ public class HttpAspect {
         //类方法
         logger.info("class_method={}",joinPoint.getSignature().getDeclaringTypeName()+"."+joinPoint.getSignature().getName());
         //参数
+
+
+
+
+
+
+
+
+
         logger.info("args={}",joinPoint.getArgs());
         logger.info("Before()执行方法");
 
