@@ -17,4 +17,8 @@ public class Father {
     public void method(){
         System.out.println("Father Method");
     }
+
+    public void method1(){
+
+    }
 }
