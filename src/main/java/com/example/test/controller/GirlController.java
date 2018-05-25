@@ -73,7 +73,7 @@ public class GirlController {
     @GetMapping(value="FindById/{id}")
     public Girl GirlFindOne(@PathVariable("id") Integer id){
         System.out.println(1);
-        return girlRepository.findById(id).get();
+        return girlRepository.getOne(id);
     }
 
     @PutMapping(value="update")
