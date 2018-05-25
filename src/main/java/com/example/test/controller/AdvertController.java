@@ -7,4 +7,3 @@ public class AdvertController {
 
 
 }
-src\main\java\com\example\test\controller
