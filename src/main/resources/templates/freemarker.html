@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<!--    <script th:src="@{/static/freemarker.js}"></script>-->
 </head>
 <body>
 <h1 th:text="${girlProperties.name}">你好啊</h1>
+
+<form th:action="@{/free/postFree}" method="post" th:object="${girlProperties}">
+    <input type="text"  th:field="*{name}">
+    <input type="submit">
+
+</form>
 </body>
 </html>
