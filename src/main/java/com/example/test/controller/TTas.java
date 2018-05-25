@@ -1,6 +1,6 @@
 package com.example.test.controller;
 
-public class TT {
+public class TTas {
     private String names;
 
     private String id;

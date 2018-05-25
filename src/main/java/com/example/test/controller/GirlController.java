@@ -2,6 +2,7 @@ package com.example.test.controller;
 
 import com.example.test.domain.Girl;
 import com.example.test.domain.Result;
+import com.example.test.properties.GirlProperties;
 import com.example.test.repository.GirlRepository;
 import com.example.test.service.GirlService;
 import com.example.test.utils.ResultUtil;
@@ -25,6 +26,18 @@ public class GirlController {
     @Autowired
     private GirlService girlService;
 
+    @Autowired
+    private GirlProperties girlProperties;
+
+    /**
+     * 查询默认女生
+     * @return
+     */
+    @GetMapping(value = "defaultGirl")
+    public GirlProperties getGirlProperties(){
+
+        return girlProperties;
+    }
     /**
      * 查询女生列表
      * @return
@@ -34,9 +47,12 @@ public class GirlController {
         HttpSession he=heq.getSession();
         System.out.println(he.getAttribute("name"));
         System.out.println("---"+model.get("name"));
+        System.out.println("11111111111");
+        System.out.println("2222222");
 /*        System.out.println("!!!"+binder.getFieldMarkerPrefix());*/
         return girlRepository.findAll();
     }
+
     /**
      * 添加一个女生
      * @return

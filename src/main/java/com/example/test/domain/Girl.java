@@ -1,10 +1,14 @@
 package com.example.test.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.text.Format;
 
 @Entity
 public class Girl {
@@ -12,6 +16,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
 
     @NotNull(message = "大小不能为空")

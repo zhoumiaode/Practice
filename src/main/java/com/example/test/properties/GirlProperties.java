@@ -6,12 +6,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "" +
-        "")
+@ConfigurationProperties(prefix = "girl")
 public class GirlProperties {
 
     private String cupSize;
 
+    //忽略该属性
     @JsonIgnore
     private String name;
 
@@ -36,6 +36,8 @@ public class GirlProperties {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     public void setAge(Integer age) {
         this.age = age;
