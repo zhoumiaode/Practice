@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import com.example.test.domain.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.text.Collator;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -38,6 +42,28 @@ public class GirlControllerTest {
                 andReturn();
 
         
+
+    }
+    @Test
+    public void testSort() {
+        Person p1 = new Person(1l, "周杰伦");
+        Person p2 = new Person(3l, "刘德华");
+        Person p3 = new Person(2l, "张学友");
+        Person p4 = new Person(4l, "成龙");
+        Person p5 = new Person(5l, "胶布虫");
+
+        List<Person> persons = Arrays.asList(p1,p2,p3,p4,p5);
+       /* Collections.sort(persons, Comparator.comparing(Person::getName));*/
+        Collections.sort(persons, new Comparator<Person>() {
+            public int compare(Person o1, Person o2) {
+                Comparator<Object> com = Collator.getInstance(java.util.Locale.CHINA);
+                return com.compare(o1.getName(), o2.getName());
+
+            }
+        });
+        for(Person pe:persons){
+            System.out.println(pe.getName());
+        }
 
     }
 }
