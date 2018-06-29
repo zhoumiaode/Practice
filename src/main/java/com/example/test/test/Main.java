@@ -11,9 +11,7 @@ public class Main {
         DemoPrototypeService p1=context.getBean(DemoPrototypeService.class);
         DemoPrototypeService p2=context.getBean(DemoPrototypeService.class);
         System.out.println(s1.equals(s2));
-        System.out.println(p1.equals(p2
-
-        ));
+        System.out.println(p1.equals(p2));
 
     }
 }
