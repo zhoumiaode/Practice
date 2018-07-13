@@ -20,4 +20,8 @@ public class DemoEvent extends ApplicationEvent{
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public void st(){
+
+    }
 }

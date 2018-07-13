@@ -5,13 +5,17 @@ import org.springframework.context.ResourceLoaderAware;
 import org.springframework.core.io.ResourceLoader;
 
 public class AwareService implements BeanNameAware,ResourceLoaderAware{
+
     private String beanName;
+
     private ResourceLoader loader;
+
     @Override
     public void setBeanName(String name) {
 
         this.beanName=name;
     }
+
 
     @Override
     public void setResourceLoader(ResourceLoader resourceLoader) {
@@ -20,6 +24,6 @@ public class AwareService implements BeanNameAware,ResourceLoaderAware{
     }
 
     public void outputResult(){
-        System.out.println("Bean的名称是:",beanName);
+       /* System.out.println("Bean的名称是:",beanName);*/
     }
 }

@@ -13,6 +13,15 @@ public class Result<T> {
     /** 具体的内容 */
     private  T data;
 
+    public Result() {
+
+        super();
+    }
+    public Result(Integer code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
     public Integer getCode() {
         return code;
     }
