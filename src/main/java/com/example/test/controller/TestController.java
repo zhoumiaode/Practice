@@ -13,4 +13,7 @@ public class TestController {
     public void main1(){
 
     }
+    public void main2(){
+
+    }
 }
