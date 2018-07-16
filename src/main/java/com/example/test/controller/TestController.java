@@ -9,4 +9,8 @@ public class TestController {
     public void main(){
 
     }
+
+    public void main1(){
+
+    }
 }
