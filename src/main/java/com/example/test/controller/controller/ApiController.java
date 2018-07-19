@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api")
 public class ApiController {
 
+    private static int  i=1;
+
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "role", method = RequestMethod.GET)
     public Result login(final HttpServletRequest request) throws ServletException {
@@ -22,5 +24,13 @@ public class ApiController {
         });
         System.out.println(claims.get("roles"));
         return new Result(000,"成功",null);
+    }
+
+    public void test(){
+
+        synchronized (this){
+            i++;
+            System.out.println(i);
+        }
     }
 }
