@@ -28,6 +28,7 @@ public class ProduceTest {
         Customer customer3=new Customer(repository);
         produce1.setNum(100);
         produce2.setNum(100);
+
         //produce2.setPriority(1);
         produce3.setNum(100);
         produce4.setNum(100);
@@ -46,5 +47,5 @@ public class ProduceTest {
         produce4.start();
         produce5.start();
         produce6.start();
-    }
+    }C:\Users\Smile\IdeaProjects\test\src\main\java\com\example\test\test\ProduceTest.java
 }
