@@ -28,7 +28,7 @@ public class Test2 {
                 e.printStackTrace();
             }
 
-            System.out.println(Thread.currentThread().getName() + "--"+test3.setID_02());
+            System.out.println(Thread.currentThread().getName() + "--"+test3.setID_03());
             System.out.println(Thread.currentThread().getName() + "-1-"+test3.setID_01());
         }
     }
