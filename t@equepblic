@@ -1,0 +1,51 @@
+[1mdiff --git a/src/main/java/com/example/test/controller/UserController.java b/src/main/java/com/example/test/controller/UserController.java[m
+[1mindex 8d0a150..ca59e88 100644[m
+[1m--- a/src/main/java/com/example/test/controller/UserController.java[m
+[1m+++ b/src/main/java/com/example/test/controller/UserController.java[m
+[36m@@ -1,46 +1,4 @@[m
+ package com.example.test.controller;[m
+ [m
+[31m-import java.util.Arrays;[m
+[31m-import java.util.Date;[m
+[31m-import java.util.HashMap;[m
+[31m-import java.util.List;[m
+[31m-import java.util.Map;[m
+[31m-[m
+[31m-import javax.servlet.ServletException;[m
+[31m-[m
+[31m-import org.springframework.web.bind.annotation.*;[m
+[31m-[m
+[31m-import io.jsonwebtoken.Jwts;[m
+[31m-import io.jsonwebtoken.SignatureAlgorithm;[m
+[31m-[m
+[31m-@RestController[m
+[31m-@RequestMapping("/user")[m
+ public class UserController {[m
+[31m-[m
+[31m-[m
+[31m-    @RequestMapping(value = "login", method = RequestMethod.POST)[m
+[31m-    public LoginResponse login(@RequestParam("name")String name,@RequestParam("password")String password)[m
+[31m-            throws ServletException {[m
+[31m-        if (name == null) {[m
+[31m-            throw new ServletException("Invalid login");[m
+[31m-        }[m
+[31m-[m
+[31m-        //加密生成token[m
+[31m-        return new LoginResponse(Jwts.builder().setSubject(name)[m
+[31m-                .claim("roles", name).setIssuedAt(new Date())[m
+[31m-                .signWith(SignatureAlgorithm.HS256, "secretkey").compact());[m
+[31m-    }[m
+[31m-[m
+[31m-    @SuppressWarnings("unused")[m
+[31m-    private static class LoginResponse {[m
+[31m-        public String token;[m
+[31m-[m
+[31m-        public LoginResponse(final String token) {[m
+[31m-            this.token = token;[m
+[31m-        }[m
+[31m-    }[m
+[31m-[m
+[31m-    public void method(){[m
+[31m-[m
+[31m-    }[m
+ }[m

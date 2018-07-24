@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ApiController {
 
+    private int i=0;
+
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "role", method = RequestMethod.GET)
     public Result login(final HttpServletRequest request) throws ServletException {
@@ -23,5 +25,13 @@ public class ApiController {
         });
         System.out.println(claims.get("roles"));
         return new Result(000,"成功",null);
+    }
+
+    public void test() {
+
+        synchronized (this){
+            i++;
+            System.out.println(i);
+        }
     }
 }

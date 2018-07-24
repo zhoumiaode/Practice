@@ -6,7 +6,7 @@ function login(){
         contentType: "application/json",
         dataType: "json",
         beforeSend: function(request) {
-            request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWNrIiwicm9sZXMiOiJqYWNrIiwiaWF0IjoxNTMxMzgyMjY1fQ.xUtmEjxI_U-CEUv2XtJMZplg5KMlaV0tRUM0X9FyrPM");
+            request.setRequestHeader("Authorization", "Bearer 1eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWNrIiwicm9sZXMiOiJqYWNrIiwiaWF0IjoxNTMxMzgyMjY1fQ.xUtmEjxI_U-CEUv2XtJMZplg5KMlaV0tRUM0X9FyrPM");
         },
         success: function(data) {
              if(data.code==0){
@@ -14,9 +14,10 @@ function login(){
              }
         },
         error: function(data) {
-            if(data.responseJSON.status=='500'){
+            console.log(data)
+            /*if(data.responseJSON.status=='500'){
                 window.location.href="login.html";
-            }
+            }*/
         }
     });
 }
