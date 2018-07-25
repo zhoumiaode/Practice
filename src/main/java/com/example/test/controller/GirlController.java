@@ -113,4 +113,10 @@ public class GirlController {
         girlService.getAge(id);
 
     }
+
+    @PostMapping(value="method1")
+    public void method(){
+        System.out.println(10);
+        System.out.println(23);
+    }
 }

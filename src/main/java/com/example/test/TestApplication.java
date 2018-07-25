@@ -9,13 +9,13 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 @SpringBootApplication
 public class TestApplication {
     //过滤器
-    @Bean
+   /* @Bean
     protected FilterRegistrationBean jwtFilter() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new JwtFilter());
         registrationBean.addUrlPatterns("/api/*");
         return registrationBean;
-    }
+    }*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
