@@ -1,4 +1,9 @@
-package com.example.test.test;
+package com.example.test.test.test;
+
+import com.example.test.test.AbstractRepository;
+import com.example.test.test.Customer;
+import com.example.test.test.Produce;
+import com.example.test.test.Repository;
 
 /**
  * @ProjectName: test
