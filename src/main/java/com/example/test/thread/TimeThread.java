@@ -19,42 +19,44 @@ public class TimeThread extends Thread {
 
     private String id;
     private GirlService girlService;
-    private  boolean flag=true;
+    private boolean flag = true;
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public TimeThread(String id,GirlService girlService){
-        this.id=id;
-        this.girlService=girlService;
+    public TimeThread(String id, GirlService girlService) {
+        this.id = id;
+        this.girlService = girlService;
     }
 
 
     public boolean isFlag() {
         return flag;
     }
+
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
-    public void run(){
-        while(flag)
+
+    public void run() {
+        while (flag) {
+            Girl girl = new Girl();
             try {
-            Girl girl=new Girl();
-                synchronized(TimeThread.class){
-                    girl=this.girlService.findOne(Integer.getInteger(id));
-                    if(girl!=null){
+                synchronized (TimeThread.class) {
+                    girl = girlService.findOne(Integer.getInteger(id));
+                    if (girl != null) {
                         this.girlService.deleteById(Integer.getInteger(id));
-                        System.out.println(Thread.currentThread().getName()+"秒杀成功");
+                        System.out.println(Thread.currentThread().getName() + "秒杀成功");
                     }
                 }
-
-                if(girl==null){
-                    System.out.println(Thread.currentThread().getName()+"秒杀失败");
+                if (girl == null) {
+                    System.out.println(Thread.currentThread().getName() + "秒杀失败");
                 }
-                flag=false;
+                flag = false;
             } catch (Exception e) {
                 // TODO Auto-generated catch block
             }
         }
     }
+}

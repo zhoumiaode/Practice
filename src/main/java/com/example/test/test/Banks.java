@@ -40,10 +40,10 @@ public class Banks {
             }
         };
 
-        thread1.start();
+/*        thread1.start();
         thread2.start();
         thread1.stop();
-        thread2.stop();
+        thread2.stop();*/
 
     }
 }
