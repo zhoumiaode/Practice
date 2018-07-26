@@ -49,9 +49,9 @@ public class HttpAspect {
         System.out.printf("After()执行方法");
     }
 
-    @AfterReturning(returning = "object",pointcut="log()")
+    /*@AfterReturning(returning = "object",pointcut="log()")
     public void doAfterReturning(Object object){
 
         logger.info("response={}",object.toString());
-    }
+    }*/
 }
