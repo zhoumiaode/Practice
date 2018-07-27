@@ -59,13 +59,14 @@ public class TimeThread extends Thread {
             try {
                 synchronized (TimeThread.class) {
                     Integer id= Integer.parseInt(this.getIds());
-                         fl=this.girlService.findById(id);
-                    if (fl) {
+                         //fl=this.girlService.findById(id);
+                    girl=this.girlService.findOne(id);
+                    if (girl!=null) {
                         this.girlService.deleteById(id);
                         System.out.println(Thread.currentThread().getName() + "秒杀成功");
                     }
                 }
-                if (!fl) {
+                if (girl==null) {
                     System.out.println(Thread.currentThread().getName() + "秒杀失败");
                 }
                 flag = false;

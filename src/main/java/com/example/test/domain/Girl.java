@@ -17,6 +17,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
+
     private String name;
     private String cupSize;
     private Integer age;
