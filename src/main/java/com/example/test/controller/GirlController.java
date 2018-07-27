@@ -73,7 +73,12 @@ public class GirlController {
     @GetMapping(value="FindById/{id}")
     public Girl GirlFindOne(@PathVariable("id") Integer id){
         System.out.println(1);
+<<<<<<< HEAD
         return girlService.findOne(id);
+=======
+        //return girlService.findOne(id);
+        return girlRepository.findById(id).get();
+>>>>>>> free
     }
 
     @PutMapping(value="update")
@@ -112,5 +117,11 @@ public class GirlController {
     public void  getAge(@PathVariable(value = "id") Integer id)throws Exception{
         girlService.getAge(id);
 
+    }
+
+    @PostMapping(value="method1")
+    public void method(){
+        System.out.println(10);
+        System.out.println(23);
     }
 }
