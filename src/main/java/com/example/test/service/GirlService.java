@@ -28,6 +28,8 @@ public class GirlService {
         girlB.setName("5");
         girlRepository.save(girlA);
         girlRepository.save(girlB);
+
+
     }
 
     public void  getAge(Integer id) throws Exception {
@@ -41,8 +43,14 @@ public class GirlService {
     }
 
     public Girl findOne(Integer id){
-        return girlRepository.findById(id).get();
+        Girl girl=null;
+        girl=girlRepository.getOne(id);
+        return girl;
 
+    }
+
+    public boolean findById(Integer id){
+        return girlRepository.existsById(id);
     }
 
     public void deleteById(Integer id){

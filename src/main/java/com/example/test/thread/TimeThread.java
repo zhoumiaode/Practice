@@ -3,6 +3,8 @@ package com.example.test.thread;
 import com.example.test.domain.Girl;
 import com.example.test.service.GirlService;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 /**
  * @ProjectName: test
  * @Package: com.example.test.thread
@@ -17,19 +19,30 @@ import com.example.test.service.GirlService;
  */
 public class TimeThread extends Thread {
 
-    private String id;
+    private String ids;
     private GirlService girlService;
     private boolean flag = true;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public TimeThread(String id, GirlService girlService) {
-        this.id = id;
+    public TimeThread(String ids, GirlService girlService) {
+        this.ids = ids;
         this.girlService = girlService;
     }
 
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
+
+    public GirlService getGirlService() {
+        return girlService;
+    }
+
+    public void setGirlService(GirlService girlService) {
+        this.girlService = girlService;
+    }
 
     public boolean isFlag() {
         return flag;
@@ -41,21 +54,26 @@ public class TimeThread extends Thread {
 
     public void run() {
         while (flag) {
-            Girl girl = new Girl();
+            Girl girl = null;
+            boolean fl=false;
             try {
                 synchronized (TimeThread.class) {
-                    girl = girlService.findOne(Integer.getInteger(id));
-                    if (girl != null) {
-                        this.girlService.deleteById(Integer.getInteger(id));
+                    Integer id= Integer.parseInt(this.getIds());
+                         fl=this.girlService.findById(id);
+                    if (fl) {
+                        this.girlService.deleteById(id);
                         System.out.println(Thread.currentThread().getName() + "秒杀成功");
                     }
                 }
-                if (girl == null) {
+                if (!fl) {
                     System.out.println(Thread.currentThread().getName() + "秒杀失败");
                 }
                 flag = false;
             } catch (Exception e) {
                 // TODO Auto-generated catch block
+                e.printStackTrace();
+            }finally{
+
             }
         }
     }
