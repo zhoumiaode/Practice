@@ -1,5 +1,6 @@
 package com.example.test.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -16,16 +17,19 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+
     private String name;
-
-    @NotNull(message = "大小不能为空")
     private String cupSize;
-
-    @Min(value=18,message = "未成年少女禁止入内")
     private Integer age;
 
-    public Girl() {
+    public Girl(){
+        super();
+    }
+    public Girl(Integer id,String name,String cupSize,Integer age) {
+        this.id=id;
+        this.age=age;
+        this.cupSize=cupSize;
+        this.name=name;
     }
 
     public Integer getId() {

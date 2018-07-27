@@ -28,6 +28,7 @@ public class ProduceTest {
         Customer customer3=new Customer(repository);
         produce1.setNum(100);
         produce2.setNum(100);
+
         //produce2.setPriority(1);
         produce3.setNum(100);
         produce4.setNum(100);

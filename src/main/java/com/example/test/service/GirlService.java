@@ -5,10 +5,15 @@ import com.example.test.enums.ResultEnums;
 import com.example.test.exception.GirlException;
 import com.example.test.repository.GirlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
+
 public class GirlService {
 
     @Autowired
@@ -26,6 +31,8 @@ public class GirlService {
         girlB.setName("5");
         girlRepository.save(girlA);
         girlRepository.save(girlB);
+
+
     }
 
     public void  getAge(Integer id) throws Exception {
@@ -39,7 +46,35 @@ public class GirlService {
     }
 
     public Girl findOne(Integer id){
-        return girlRepository.findById(id).get();
+        Girl girl=null;
+        if(girlRepository.findById(id).isPresent()) {
+            girl = girlRepository.findById(id).get();
+        }
+        return girl;
+
+    }
+
+    public boolean findById(Integer id){
+        return girlRepository.existsById(id);
+    }
+
+    public void deleteById(Integer id){
+        girlRepository.deleteById(id);
+    }
+
+    public Optional<Girl> findOne1(Integer id){
+        return girlRepository.findById(id);
+
+    }
+
+    public Girl findAB(String name,int age){
+        return girlRepository.findAB(name,age);
+
+    }
+
+    @Transactional
+    public int updateAB(String name,int age){
+        return girlRepository.updateAB(name,age);
 
     }
 }

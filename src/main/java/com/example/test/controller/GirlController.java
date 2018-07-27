@@ -7,6 +7,7 @@ import com.example.test.repository.GirlRepository;
 import com.example.test.service.GirlService;
 import com.example.test.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -73,7 +74,8 @@ public class GirlController {
     @GetMapping(value="FindById/{id}")
     public Girl GirlFindOne(@PathVariable("id") Integer id){
         System.out.println(1);
-        return girlRepository.getOne(id);
+        return girlService.findOne(id);
+        //return girlRepository.findById(id).get();
     }
 
     @PutMapping(value="update")
@@ -112,5 +114,24 @@ public class GirlController {
     public void  getAge(@PathVariable(value = "id") Integer id)throws Exception{
         girlService.getAge(id);
 
+    }
+
+    @PostMapping(value="method1")
+    public void method(){
+        System.out.println(10);
+        System.out.println(23);
+    }
+
+    @GetMapping(value="ab")
+    public void findAD(@Param("name") String name,@Param("age") String age){
+
+        Girl girl=girlService.findAB(name,Integer.parseInt(age));
+        System.out.println(girl.getId());
+    }
+
+    @PostMapping(value = "ab")
+    public int updateAB(@Param("name")String name,@Param("age")int age){
+
+        return girlService.updateAB(name,age);
     }
 }
