@@ -35,6 +35,7 @@ public class TimeTest {
                         System.out.println("线程" + Thread.currentThread().getName() +
                                 "已接受命令");
                         JSONObject result=new JSONObject();
+
                         JSONObject json=new JSONObject();
                         json.put("id", "28");
                         result= HttpClientUtil.httpPost("http://192.168.89.136:8880/method", json, true);
