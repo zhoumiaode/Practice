@@ -24,10 +24,11 @@ public interface GilrsMapper {
 
 
     @Select("select * from girls where id =#{id}")
-    @Results({
-            @Result(property = "id",column = "id"),
-            @Result(property = "name",column = "name"),
-            @Result(property = "age",column = "age")
+    @Results(value = {
+            @Result(property = "id", column = "id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "age", column = "age"),
+            @Result(property = "persons", column = "id", many = @Many(select = "com.example.test.mapper.PersonsMapper.findByAge"))
     })
     public List<Girls> findAll( int id);
 }
