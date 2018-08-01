@@ -5,6 +5,7 @@ import com.example.test.domain.Persons;
 import com.example.test.service.GirlsService;
 import com.example.test.service.PersonsService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -42,5 +43,26 @@ public class GirlsController {
 
         int age=1;
         return personsService.find(age);
+    }
+
+    @PostMapping(value = "savaCache")
+    public Object savaCache(){
+        Girls girls=new Girls();
+        girls.setId(3);
+        girls.setAge(6);
+        girls.setName("6");
+        try {
+            girlsService.saveGirls(girls);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return girls;
+    }
+
+    @GetMapping(value = "getCache")
+    public Girls findCache() throws Exception {
+        Girls girls=new Girls();
+        girls=girlsService.findByID(1);
+        return girls;
     }
 }

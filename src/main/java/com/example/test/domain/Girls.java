@@ -1,5 +1,6 @@
 package com.example.test.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  * @UpdateRemark: The modified content
  * @Version: 1.0
  */
-public class Girls {
+public class Girls implements Serializable{
 
     private int id;
     private String name;
@@ -58,6 +59,8 @@ public class Girls {
         this.id = id;
         this.name = name;
         this.age = age;
+    }
+    public Girls() {
     }
 
     @Override

@@ -1,10 +1,7 @@
 package com.example.test.mapper;
 
 import com.example.test.domain.Girls;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -31,4 +28,15 @@ public interface GilrsMapper {
             @Result(property = "persons", column = "id", many = @Many(select = "com.example.test.mapper.PersonsMapper.findByAge"))
     })
     public List<Girls> findAll( int id);
+
+    @Insert("insert into girls(id,name,age) values(#{id},#{name},#{age})")
+    public void saveGilrs(Girls girls);
+
+    @Select("select * from girls where id =#{id}")
+    @Results(value = {
+            @Result(property = "id", column = "id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "age", column = "age")
+    })
+    public Girls findById( int id);
 }
