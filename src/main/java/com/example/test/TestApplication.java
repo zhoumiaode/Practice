@@ -7,7 +7,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -27,9 +29,15 @@ import javax.sql.DataSource;
 @ComponentScan("com.example.test.*")
 //@EnableScheduling //表示开启定时任务的支持
 @EnableAsync  //表示开启异步执行的支持
-@EnableWebMvc
+//@EnableWebMvc
 @EnableCaching //开启缓存
-public class TestApplication {
+public class TestApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(TestApplication.class);
+    }
+
     //过滤器
     @Bean
     protected FilterRegistrationBean jwtFilter() {
