@@ -2,6 +2,7 @@ package com.example.test.service;
 
 import com.example.test.domain.Girls;
 import com.example.test.mapper.GilrsMapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,11 @@ public class GirlsService {
         System.out.println(1);
         Girls girl=gilrsMapper.findById(id);
         return girl;
+    }
+
+    @CacheEvict(value = "girl",key = "#id")
+    public int  deleteByID(int id) throws Exception{
+        int a=gilrsMapper.deleteById(id);
+        return a;
     }
 }

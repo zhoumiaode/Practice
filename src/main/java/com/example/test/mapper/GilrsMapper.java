@@ -39,4 +39,7 @@ public interface GilrsMapper {
             @Result(property = "age", column = "age")
     })
     public Girls findById( int id);
+
+    @Delete("delete from girls where id=#{id}")
+    public int deleteById( int id);
 }

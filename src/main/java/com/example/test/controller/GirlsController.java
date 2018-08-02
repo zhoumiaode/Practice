@@ -4,6 +4,7 @@ import com.example.test.domain.Girls;
 import com.example.test.domain.Persons;
 import com.example.test.service.GirlsService;
 import com.example.test.service.PersonsService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -64,5 +65,11 @@ public class GirlsController {
         Girls girls=new Girls();
         girls=girlsService.findByID(1);
         return girls;
+    }
+    @DeleteMapping(value = "detleteCache")
+    public int deleteCache() throws Exception {
+
+        int a =girlsService.deleteByID(1);
+        return a;
     }
 }
