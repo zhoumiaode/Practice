@@ -20,6 +20,6 @@ public class JspController {
 
     @RequestMapping(value = "hello1")
     public String hell1(){
-        return "hello1";
+        return "hello";
     }
 }

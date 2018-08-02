@@ -3,17 +3,27 @@ package com.example.test.Filter;
 import java.io.IOException;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.GenericFilterBean;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
-public class JwtFilter extends GenericFilterBean {
+
+/*@Order(1)
+@WebFilter(filterName = "JwtFilter",urlPatterns = "/apia/*")*/
+public class JwtFilter extends GenericFilterBean implements Filter{
 
     @Override
+    public void destroy() {
+        System.out.println("过滤器被销毁");
+    }
+
+        @Override
     public void doFilter(final ServletRequest req,
                          final ServletResponse res,
                          final FilterChain chain) throws IOException, ServletException {
@@ -44,4 +54,9 @@ public class JwtFilter extends GenericFilterBean {
 
         chain.doFilter(req, res);
     }
+
+    /*@Override
+    public void init(FilterConfig arg0) throws ServletException{
+        System.out.println("过滤器被初始化");
+    }*/
 }

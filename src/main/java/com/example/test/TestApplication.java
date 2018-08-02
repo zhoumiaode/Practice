@@ -1,6 +1,7 @@
 package com.example.test;
 
 import com.example.test.Filter.JwtFilter;
+import com.example.test.Intercepter.TestIntercepter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +23,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.sql.DataSource;
 
@@ -31,6 +35,7 @@ import javax.sql.DataSource;
 @EnableAsync  //表示开启异步执行的支持
 //@EnableWebMvc
 @EnableCaching //开启缓存
+@ServletComponentScan
 public class TestApplication extends SpringBootServletInitializer {
 
     @Override
@@ -38,15 +43,25 @@ public class TestApplication extends SpringBootServletInitializer {
         return builder.sources(TestApplication.class);
     }
 
-    //过滤器
+    /*//过滤器
     @Bean
     protected FilterRegistrationBean jwtFilter() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new JwtFilter());
         registrationBean.addUrlPatterns("/api/*");
+        registrationBean.setOrder(1);
         return registrationBean;
-    }
+    }*/
 
+    //mvc控制器
+    //@Configuration
+    static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
+        //增加拦截器
+        public void addInterceptors(InterceptorRegistry registry){
+            registry.addInterceptor(new TestIntercepter())    //指定拦截器类
+                    .addPathPatterns("/*");        //指定该类拦截的url
+        }
+    }
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
 
