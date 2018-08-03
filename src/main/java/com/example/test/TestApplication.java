@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -37,6 +38,14 @@ import javax.sql.DataSource;
 @EnableCaching //开启缓存
 @ServletComponentScan
 public class TestApplication extends SpringBootServletInitializer {
+
+    /*监听器配置
+    @Bean
+    public ServletListenerRegistrationBean servletListenerRegistrationBean(){
+        ServletListenerRegistrationBean servletListenerRegistrationBean = new ServletListenerRegistrationBean();
+        servletListenerRegistrationBean.setListener(new IndexListener());
+        return servletListenerRegistrationBean;
+    }*/
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
