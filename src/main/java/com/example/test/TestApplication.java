@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -36,7 +37,8 @@ import javax.sql.DataSource;
 @ComponentScan("com.example.test.*")
 //@EnableScheduling //表示开启定时任务的支持
 @EnableAsync  //表示开启异步执行的支持
-//@EnableWebMvc
+//@EnableWebMvc  //表示启动springMVC自定义配置类，如果使用JSP要实现InternalResourceViewResolver方法，配置文件默认读取失效
+@EnableAutoConfiguration
 @EnableCaching //开启缓存
 @ServletComponentScan
 public class TestApplication extends SpringBootServletInitializer {
@@ -65,7 +67,7 @@ public class TestApplication extends SpringBootServletInitializer {
         return registrationBean;
     }
 
-    //mvc控制器
+    /*//mvc控制器
     //@Configuration
     static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         //增加拦截器
@@ -73,7 +75,7 @@ public class TestApplication extends SpringBootServletInitializer {
             registry.addInterceptor(new TestIntercepter())    //指定拦截器类
                     .addPathPatterns("/*");        //指定该类拦截的url
         }
-    }
+    }*/
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
 

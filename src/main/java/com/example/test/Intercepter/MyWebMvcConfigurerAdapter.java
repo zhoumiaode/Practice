@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguratio
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * @ProjectName: test
@@ -55,5 +56,21 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("upload").setViewName("hello");
         System.out.println("222222222222222222222222222");
+    }
+
+    /**
+    * @Description:配置访问jsp页面路径
+    * @Param: []
+    * @return: org.springframework.web.servlet.view.InternalResourceViewResolver
+    * @Author: zhoumiaode
+    * @Date: 2018/08/03
+    */
+    @Bean
+    public InternalResourceViewResolver viewResolver(){
+
+        InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/jsp/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
     }
 }
