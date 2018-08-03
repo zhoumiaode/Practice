@@ -3,9 +3,7 @@ package com.example.test.Intercepter;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * @ProjectName: test
@@ -20,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @Version: 1.0
  */
 @Configuration
-public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
+public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
 
     @Bean
     public  TestIntercepter testIntercepter() {
@@ -45,5 +43,17 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
                 .excludePathPatterns("/hlladmin/user/register") //用户注册
                 .excludePathPatterns("/hlladmin/user/login"); //用户登录
         super.addInterceptors(registry);
+    }
+
+    /** 
+    * @Description:  设置控制器的返回视图
+    * @Param: [registry]
+    * @return: void 
+    * @Author: zhoumiaode
+    * @Date: 2018/08/03 
+    */ 
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("upload").setViewName("hello");
+        System.out.println("222222222222222222222222222");
     }
 }

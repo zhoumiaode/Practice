@@ -34,8 +34,8 @@ public class JwtFilter extends GenericFilterBean implements Filter{
         //客户端将token封装在请求头中，格式为（Bearer后加空格）：Authorization：Bearer +token
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            /*throw new ServletException("Missing or invalid Authorization header.");*/
-            response.sendRedirect("hellp.html");
+            throw new ServletException("Missing or invalid Authorization header.");
+
         }
 
         //去除Bearer 后部分

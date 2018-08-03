@@ -2,6 +2,7 @@ package com.example.test;
 
 import com.example.test.Filter.JwtFilter;
 import com.example.test.Intercepter.TestIntercepter;
+import com.example.test.test1.Test;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +26,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.sql.DataSource;
@@ -52,7 +54,8 @@ public class TestApplication extends SpringBootServletInitializer {
         return builder.sources(TestApplication.class);
     }
 
-    /*//过滤器
+
+    //过滤器
     @Bean
     protected FilterRegistrationBean jwtFilter() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
@@ -60,7 +63,7 @@ public class TestApplication extends SpringBootServletInitializer {
         registrationBean.addUrlPatterns("/api/*");
         registrationBean.setOrder(1);
         return registrationBean;
-    }*/
+    }
 
     //mvc控制器
     //@Configuration

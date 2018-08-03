@@ -61,7 +61,7 @@ public class GirlController {
      * 添加一个女生
      * @return
      */
-    @PostMapping(value="girls")
+    @PostMapping(value="girlss")
     public Object girlAdd(@Valid Girl girl, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             Result result=new Result();
