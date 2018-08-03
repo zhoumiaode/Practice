@@ -1,8 +1,12 @@
 package com.example.test.test;
 
+import com.example.test.httpClient.HttpAPIService;
 import com.example.test.utils.HttpClientUtil;
 import net.sf.json.JSONObject;
 
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,6 +26,7 @@ import java.util.concurrent.Executors;
 public class TimeTest {
 
     public static void main(String[] args){
+
         ExecutorService service = Executors.newCachedThreadPool(); //创建一个线程池
         final CountDownLatch cdOrder = new CountDownLatch(1);//指挥官的命令，设置为1，指挥官一下达命令，则cutDown,变为0，战士们执行任务
         final CountDownLatch cdAnswer = new CountDownLatch(100);
@@ -37,8 +42,9 @@ public class TimeTest {
                         JSONObject result=new JSONObject();
 
                         JSONObject json=new JSONObject();
-                        json.put("id", "28");
+                        json.put("id", "29");
                         result= HttpClientUtil.httpPost("http://192.168.89.136:8880/method", json, true);
+
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
