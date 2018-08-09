@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body onload="disconnect()">
 <noscript><h2 style="color: #ff0000">貌似你的游览器不支持websocket</h2></noscript>
+<h1 th:text="${name}"></h1>
 <div>
     <div>
         <button  id="connect" onclick="connect()">连接</button>
@@ -25,7 +26,7 @@
     function setConnected(connected) {
         document.getElementById('connect').disabled=connected;
         document.getElementById('disconnect').disabled=!connected;
-        document.getElementById('conversationDiv').style.visibility=connected?'visable':'hidden';
+        document.getElementById('conversationDiv').style.visibility=connected?'visible':'hidden';
         $('#response').html();
     }
     
@@ -55,7 +56,7 @@
     }
     function showResponse(message) {
         var response=$('#response');
-        response.html(message);
+        response.append(message);
     }
 </script>
 </body>

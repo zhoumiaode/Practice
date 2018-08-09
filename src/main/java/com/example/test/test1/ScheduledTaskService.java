@@ -32,4 +32,10 @@ public class ScheduledTaskService {
     public void fixTimeExcetion(){
         System.out.println("指定时间执行"+dateFormat.format(new Date()));
     }
+
+    @Scheduled(fixedRate = 3000)
+    public String f(){
+        System.out.println("消息推送");
+        return "redirect:/welcome";
+    }
 }
