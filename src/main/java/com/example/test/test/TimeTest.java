@@ -56,6 +56,7 @@ public class TimeTest {
             service.execute(runnable);//为线程池添加任务
         }
         try {
+
             Thread.sleep((long)(Math.random()*10000));
             cdOrder.countDown(); //发送命令，cdOrder减1，处于等待的战士们停止等待转去执行任务。
             cdAnswer.await(); //命令发送后指挥官处于等待状态，一旦cdAnswer为0时停止等待继续往下执行

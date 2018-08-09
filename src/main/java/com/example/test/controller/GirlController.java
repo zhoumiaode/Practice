@@ -53,6 +53,7 @@ public class GirlController {
         HttpSession he=heq.getSession();
         System.out.println(he.getAttribute("name"));
         System.out.println("---"+model.get("name"));
+        System.out.println(GirlController.class.getResource("/").getPath());
 /*        System.out.println("!!!"+binder.getFieldMarkerPrefix());*/
         return girlRepository.findAll();
     }
@@ -161,11 +162,22 @@ public class GirlController {
             e.printStackTrace();
         }
         return girl;
+
+
+
     }
 
     @GetMapping(value = "findByIdMyBatis")
     public Girl findByIdMyBatis(@RequestParam(value = "id")Integer id){
 
         return girlService.findByIdMyBatis(id);
+    }
+
+    @GetMapping(value="GG")
+    public List<Girl> girlList(HttpServletRequest request,@RequestParam("name") String name,@RequestParam("age")String age) {
+
+        System.out.println(name);
+        System.out.println(age);
+        return girlRepository.findAll();
     }
 }

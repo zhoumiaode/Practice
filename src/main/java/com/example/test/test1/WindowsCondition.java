@@ -16,6 +16,7 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * @UpdateRemark: The modified content
  * @Version: 1.0
  */
+
 public class WindowsCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {

@@ -17,7 +17,8 @@ import java.util.logging.SimpleFormatter;
 
 
 @ControllerAdvice
-public class ExceptionHandle {
+public class
+ExceptionHandle {
 
     private static final Logger logger=LoggerFactory.getLogger(ExceptionHandle.class);
 

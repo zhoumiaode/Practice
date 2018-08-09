@@ -3,8 +3,11 @@ package com.example.test.Intercepter;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.List;
 
 /**
  * @ProjectName: test
@@ -55,6 +58,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
     */ 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("upload").setViewName("hello");
+        registry.addViewController("sse").setViewName("sse");
         System.out.println("222222222222222222222222222");
     }
 
@@ -72,5 +76,16 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+    /** 
+    * @Description: 定义自定义的HttpMessageConverter
+    * @Param: [converters]
+    * @return: void 
+    * @Author: zhoumiaode
+    * @Date: 2018/08/08 
+    */ 
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters){
+
     }
 }
