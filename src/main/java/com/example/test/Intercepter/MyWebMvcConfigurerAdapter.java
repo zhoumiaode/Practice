@@ -60,6 +60,8 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
         registry.addViewController("upload").setViewName("hello");
         registry.addViewController("sse").setViewName("sse");
         registry.addViewController("ws").setViewName("ws");
+        registry.addViewController("login").setViewName("login");
+        registry.addViewController("chat").setViewName("chat");
         System.out.println("222222222222222222222222222");
     }
 

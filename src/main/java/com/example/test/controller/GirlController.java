@@ -1,12 +1,19 @@
 package com.example.test.controller;
 
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.domain.AlipayTradeAppPayModel;
+import com.alipay.api.request.AlipayTradeAppPayRequest;
+import com.alipay.api.response.AlipayTradeAppPayResponse;
 import com.example.test.domain.Girl;
 import com.example.test.domain.Result;
 import com.example.test.properties.GirlProperties;
 import com.example.test.repository.GirlRepository;
 import com.example.test.service.GirlService;
 import com.example.test.utils.ResultUtil;
+import com.example.test.zhifubao.AliPayConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

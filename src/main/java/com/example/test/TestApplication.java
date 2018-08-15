@@ -37,7 +37,7 @@ import javax.sql.DataSource;
 @SpringBootApplication
 @MapperScan("com.example.test.mapper")
 @ComponentScan("com.example.test.*")
-@EnableScheduling //表示开启定时任务的支持
+//@EnableScheduling //表示开启定时任务的支持
 @EnableAsync  //表示开启异步执行的支持
 //@EnableWebMvc  //表示启动springMVC自定义配置类，如果使用JSP要实现InternalResourceViewResolver方法，配置文件默认读取失效
 @EnableAutoConfiguration

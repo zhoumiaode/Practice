@@ -1,3 +1,4 @@
+/*
 package com.example.test.websocket;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
 import java.security.Principal;
 
+*/
 /**
  * @ProjectName: test
  * @Package: com.example.test.websocket
@@ -20,7 +22,8 @@ import java.security.Principal;
  * @UpdateDate: 2018/08/09 10:16
  * @UpdateRemark: The modified content
  * @Version: 1.0
- */
+ *//*
+
 @Controller
 public class WsController {
     @Resource
@@ -45,3 +48,4 @@ public class WsController {
         }
     }
 }
+*/
