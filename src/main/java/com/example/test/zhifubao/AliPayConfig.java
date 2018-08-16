@@ -89,7 +89,7 @@ public class AliPayConfig {
     public static final  String charset = "UTF-8";
 
     // 接收通知的接口名(这里的域名或者ip需要填写外网可以访问的地址)
-    public static final String notifyUrl = "http://yxep7y.natappfree.cc/alipay/notify";
+    public static final String notifyUrl = "http://2kb1752953.iok.la:52718/notify";
     // 接收通知的接口名(这里的域名或者ip需要填写外网可以访问的地址)
     public static final String returnUrl = "http://yxep7y.natappfree.cc/alipay/return";
     //APPID

@@ -41,9 +41,9 @@ public class AliPayController {
         //ac = new String(ac.getBytes("ISO-8859-1"), "utf-8");
         model.setBody(ac);
         model.setSubject("你弟弟和啊");
-        model.setOutTradeNo("123456");
+        model.setOutTradeNo("781");
         model.setTimeoutExpress("30m");
-        model.setTotalAmount("6097");
+        model.setTotalAmount("12");
         model.setProductCode("QUICK_MSECURITY_PAY");
         //不确定调用sdkExecute和Execute是否需要在实例化的时候调用不同的公钥
         AlipayClient alipayClient = new DefaultAlipayClient(AliPayConfig.gatewayUrl,AliPayConfig.app_id,AliPayConfig.private_key,AliPayConfig.formate,AliPayConfig.charset,AliPayConfig.ali_public_key,AliPayConfig.signType);
@@ -62,8 +62,10 @@ public class AliPayController {
         return orderStr;
     }
 
-    @PostMapping(value = "notify")
-    public Object notify(@RequestBody String body, HttpServletRequest requests, HttpServletResponse httpServletResponse) throws Exception {
+    @PostMapping(value = "notify", produces = "text/html;charset=UTF-8")
+    public String  notify(HttpServletRequest requests, HttpServletResponse httpServletResponse) throws Exception {
+        //httpServletResponse.getWriter().print("success");
+        System.out.println("11111111111");
         Map requestParams = requests.getParameterMap();
         System.out.println("支付宝支付结果通知"+requestParams.toString());
         //获取支付宝POST过来反馈信息
@@ -93,15 +95,21 @@ public class AliPayController {
                     String out_trade_no = params.get("out_trade_no");
                     //支付宝交易号
                     String trade_no = params.get("trade_no");
+                    System.out.println("返回码成功");
                     //附加数据
-                    String passback_params = URLDecoder.decode(params.get("passback_params"));
+                   // String passback_params = URLDecoder.decode(params.get("passback_params"));
 
+                }else{
+                    System.out.println("返回码失败");
                 }
+            }else{
+                System.out.println("验签失败");
             }
         } catch (AlipayApiException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-           return "success";
+
+        return "success";
     }
 }
