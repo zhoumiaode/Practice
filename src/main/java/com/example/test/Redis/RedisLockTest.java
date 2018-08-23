@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 public class RedisLockTest {
 
     public static final String KEY="lock";
-    public static final long Time_Out=500;
+    public static final long Time_Out=200;
     public static void main(String[] args){
         JedisPoolConfig config=new JedisPoolConfig();
         // 设置最大连接数
@@ -38,8 +38,8 @@ public class RedisLockTest {
         JedisPool pool = new JedisPool(config, "127.0.0.1", 6379);
         ExecutorService service = Executors.newCachedThreadPool(); //创建一个线程池
         final CountDownLatch cdOrder = new CountDownLatch(1);//指挥官的命令，设置为1，指挥官一下达命令，则cutDown,变为0，战士们执行任务
-        final CountDownLatch cdAnswer = new CountDownLatch(550);
-        for(int i=0;i<550;i++){
+        final CountDownLatch cdAnswer = new CountDownLatch(50);
+        for(int i=0;i<50;i++){
             Runnable runnable = new Runnable(){
                 public void run(){
                     RedisTest redisTest=new RedisTest(pool);

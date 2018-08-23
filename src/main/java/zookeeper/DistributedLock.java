@@ -34,7 +34,7 @@ public class DistributedLock implements Watcher{
     private static final String SUB_PATH = "/disLocks/sub";
     private static final String CONNECTION_STRING = "192.168.89.136:2181";
 
-    private static final int THREAD_NUM = 10;
+    private static final int THREAD_NUM = 20;
     //确保连接zk成功；
     private CountDownLatch connectedSemaphore = new CountDownLatch(1);
     //确保所有线程运行结束；
@@ -115,11 +115,12 @@ public class DistributedLock implements Watcher{
      * 获取锁成功
      */
     public void getLockSuccess() throws KeeperException, InterruptedException {
-        if(zk.exists(this.selfPath,false) == null){
-            LOG.error(LOG_PREFIX_OF_THREAD+"本节点已不在了...");
+            if(zk.exists(this.selfPath,false) == null){
+                LOG.error(LOG_PREFIX_OF_THREAD+"本节点已不在了...");
             return;
         }
-        LOG.info(LOG_PREFIX_OF_THREAD + "获取锁成功，赶紧干活！");
+        LOG.info(LOG_PREFIX_OF_THREAD + "" +
+                "获取锁成功，赶紧干活！");
         Thread.sleep(2000);
         LOG.info(LOG_PREFIX_OF_THREAD + "删除本节点："+selfPath);
         zk.delete(this.selfPath, -1);

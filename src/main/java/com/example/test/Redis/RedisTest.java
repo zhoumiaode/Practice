@@ -47,9 +47,11 @@ public class RedisTest {
             //返回1表示获取锁成功
             if(conn.setnx(key,String.valueOf(System.currentTimeMillis()+timeout))==1){
                 System.out.println(Thread.currentThread().getName()+"我拿到锁了");
+                getExpire(key);
                 conn.expire(key,5);
                 return true;
             }
+
                 //获取锁的生存时间
                 String time1=getExpire(key);
                 //锁的生存时间小于当前时间，则表示锁已经失效
@@ -58,8 +60,11 @@ public class RedisTest {
                     //重新设置锁的生存时间,返回旧的生存时间
                     //String a=null;
                     //synchronized (RedisTest.class){
-                    String   a=conn.getSet(key,String.valueOf(System.currentTimeMillis()+timeout));
-                   // }
+
+                    String a = conn.getSet(key, String.valueOf(System.currentTimeMillis() + timeout));
+
+                    // }
+
 
                     //如果旧的生存时间<当前时间，则表示我是第一个进行getset操作，我可以拿到锁，另一种那返回的锁的时候和上面一开始getExpire()
                     //方法获得的时候进行比较，如果相同则表示我是第一个getset的，不相同则表示在我之前已经有人进行过getset操作，那么我只能重新请求。
@@ -71,7 +76,7 @@ public class RedisTest {
                         return true;
                     }else{
                         System.out.println(Thread.currentThread().getName()+"正在尝试重新获取锁中");
-                        Thread.sleep(100);
+                        Thread.sleep(500);
                     }
                 }
             }
