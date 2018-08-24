@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ProjectName: test
@@ -33,18 +34,24 @@ public class CuratorLock {
 
     public static void main(String[] args)throws Exception{
         curatorFramework.start();
-        InterProcessMutex interProcessMutex=new InterProcessMutex(curatorFramework,"/pas");
+        //InterProcessMutex interProcessMutex=new InterProcessMutex(curatorFramework,"/pas");
         ExecutorService service1 = Executors.newCachedThreadPool(); //创建一个线程池
         for(int i=0;i<10;i++){
             Runnable runnable = new Runnable(){
+
                 public void run(){
+                    InterProcessMutex interProcessMutex=new InterProcessMutex(curatorFramework,"/pas");
+
                     try {
                         System.out.println("开始流水线工作啦");
                         order.await();
-                        interProcessMutex.acquire();
-                        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss|SSS");
-                        String orderNo=sdf.format(new Date());
-                        System.out.println("生成的订单号是："+orderNo);
+                        if(interProcessMutex.acquire(1, TimeUnit.SECONDS)){
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss|SSS");
+                            String orderNo=sdf.format(new Date());
+                            System.out.println("生成的订单号是："+orderNo);
+                        }else{
+                            System.out.println("dd");
+                        }
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
