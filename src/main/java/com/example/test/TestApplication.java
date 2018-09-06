@@ -25,6 +25,9 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+/*import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;*/
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -43,6 +46,7 @@ import javax.sql.DataSource;
 @EnableAutoConfiguration
 @EnableCaching //开启缓存
 @ServletComponentScan
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600)//开启redisSession
 public class TestApplication extends SpringBootServletInitializer {
 
     /*监听器配置

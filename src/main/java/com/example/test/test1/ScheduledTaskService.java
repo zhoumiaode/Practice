@@ -23,17 +23,17 @@ public class ScheduledTaskService {
 
     private static final SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(fixedRate = 5000)
+    //@Scheduled(fixedRate = 5000)
     public void reportCurrentTime(){
         System.out.println("每隔5秒执行一次"+dateFormat.format(new Date()));
     }
 
-    @Scheduled(cron = "*/10 * * * * *")
+    //@Scheduled(cron = "*/10 * * * * *")
     public void fixTimeExcetion(){
         System.out.println("指定时间执行"+dateFormat.format(new Date()));
     }
 
-    @Scheduled(fixedRate = 3000)
+    //@Scheduled(fixedRate = 3000)
     public String f(){
         System.out.println("消息推送");
         return "redirect:/welcome";

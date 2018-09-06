@@ -30,7 +30,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
     }
 
     /**
-     * 配置静态资源
+     * 配置静态资源，使访问路径生效，比如访问html文件
      */
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
