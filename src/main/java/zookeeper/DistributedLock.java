@@ -14,7 +14,7 @@ import java.util.concurrent.CountDownLatch;
  * @ProjectName: test
  * @Package: zookeeper
  * @ClassName: DistributedLock
- * @Description: java类作用描述
+ * @Description: zk分布式锁
  * @Author: zhoumiaode
  * @CreateDate: 2018/08/20 15:47
  * @UpdateUser: Neil.Zhou

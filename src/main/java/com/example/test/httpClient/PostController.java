@@ -29,13 +29,12 @@ public class PostController {
     public String post(){
 
         String result="";
-        String url="http://192.168.89.136:8880/test/ppp";
+        String url="http://192.168.89.136:8888/ppp";
         SortedMap<Object,Object> map=new TreeMap<Object, Object>();
         map.put("a","a");
         map.put("b","b");
         try {
             result=PostTest.post(url,map.toString());
-            System.out.println(result);
         } catch (IOException e) {
             e.printStackTrace();
         }

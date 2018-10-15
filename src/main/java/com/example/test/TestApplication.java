@@ -45,7 +45,7 @@ import javax.sql.DataSource;
 //@EnableWebMvc  //表示启动springMVC自定义配置类，如果使用JSP要实现InternalResourceViewResolver方法，配置文件默认读取失效
 @EnableAutoConfiguration
 @EnableCaching //开启缓存
-@ServletComponentScan
+@ServletComponentScan//开启过滤器
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600)//开启redisSession
 public class TestApplication extends SpringBootServletInitializer {
 
