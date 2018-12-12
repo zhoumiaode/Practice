@@ -1,11 +1,12 @@
 package com.example.test.repository;
 
 import com.example.test.domain.Girl;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 
 public interface GirlRepository extends JpaRepository<Girl,Integer> {
@@ -18,4 +19,7 @@ public interface GirlRepository extends JpaRepository<Girl,Integer> {
     @Modifying
     @Query(value = "update Girl a set a.age=:age where a.name=:name")
     public int updateAB(@Param("name") String name,@Param("age") int age);
+
+    @Query(value = "select t from Girl t")
+    public Page<Girl> findAll(Pageable pageable);
 }

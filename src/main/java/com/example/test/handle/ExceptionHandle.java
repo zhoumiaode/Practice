@@ -9,6 +9,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +17,8 @@ import java.util.logging.SimpleFormatter;
 
 
 @ControllerAdvice
-public class ExceptionHandle {
+public class
+ExceptionHandle {
 
     private static final Logger logger=LoggerFactory.getLogger(ExceptionHandle.class);
 
@@ -25,6 +27,7 @@ public class ExceptionHandle {
        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+        binder.setDisallowedFields("id");//过滤掉id字段
 
     }
 
@@ -46,4 +49,11 @@ public class ExceptionHandle {
             return ResultUtil.error(-1,e.getMessage());
         }
     }
+
+    /*@ExceptionHandler(value = Exception.class)
+    public ModelAndView Handle(Exception e){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("error");
+        return  modelAndView;
+    }*/
 }

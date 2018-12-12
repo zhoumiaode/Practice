@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    聊天室
+</p>
+<form id="wiselyForm">
+    <textarea rows="4" cols="60" name="text"></textarea>
+    <input type="submit"/>
+</form>
+<script th:inline="javascript">
+    $('#wiselyForm').submit(function (e) {
+        e.preventDefault();
+        var text=$('#wiselyForm').find('texttarea[name="text"]').val();
+        sendSpittle(text);
+    });
+    var sock=new SockJS("/endpointchat");
+    var stomp=Stomp.over(sock);
+    stomp.connect('guest','guest',function (frame) {
+        stomp.subscribe("/user/queue/notifications",handleNotification);
+    });
+    function handleNotification(message) {
+        $('#output').append("<b>Received:"+message.body+"</b><br/>");
+    }
+    function sendSpittle(text) {
+        stomp.send("/chat",{},text);
+    }
+    $('#stop').click(function () {
+        sock.close();
+    })
+</script>
+<div id="output">
+
+</div>
+</body>
+</html>

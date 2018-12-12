@@ -4,23 +4,23 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.text.Format;
+import java.util.List;
 
 @Entity
+@Table(name = "girl")
 public class Girl {
     @Id
     @GeneratedValue
     private Integer id;
-
-
+    @NotNull
     private String name;
     private String cupSize;
     private Integer age;
+
 
     public Girl(){
         super();
@@ -64,13 +64,4 @@ public class Girl {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Girl{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", cupSize='" + cupSize + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
