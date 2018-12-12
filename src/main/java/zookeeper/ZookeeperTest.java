@@ -37,7 +37,7 @@ public class ZookeeperTest implements Watcher{
         zookeeper.exists(path,true);
         zookeeper.getData(path,true,stat);
         zookeeper.delete(path,-1);//-1表示忽略版本
-        System.out.println("同步读取节点内容：" + new String(zookeeper.getData(path,true,stat)));
+        //System.out.println("同步读取节点内容：" + new String(zookeeper.getData(path,true,stat)));
         String path1 = zookeeper.create(path,"123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         //System.out.println("Success create znode:"+path1);
         //zookeeper.exists(path,true);

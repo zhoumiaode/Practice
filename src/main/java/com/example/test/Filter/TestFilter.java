@@ -44,12 +44,13 @@ public class TestFilter implements Filter {
             chain.doFilter(req, res);
             return;
         }else{
-            if(session!=null&&session.getAttribute("sessionId")!=null){
+            /*if(session!=null&&session.getAttribute("sessionId")!=null){
                 chain.doFilter(request,response);
             }else{
                 RequestDispatcher rd=request.getRequestDispatcher("/static/loginIn.html");
                 rd.forward(request,response);
-            }
+            }*/
+            chain.doFilter(req, res);
         }
         chain.doFilter(request,response);
     }
