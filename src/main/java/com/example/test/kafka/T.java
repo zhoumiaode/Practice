@@ -19,6 +19,7 @@ public class T implements ProducerListener {
     @Override
     public void onSuccess(String s, Integer integer, Object o, Object o2, RecordMetadata recordMetadata) {
 
+        String a="{\"1\":\"1\"}";
     }
 
     @Override

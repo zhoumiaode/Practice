@@ -34,40 +34,40 @@ public class KafkaProducerConfig {
 
 
     @Value(value = "${bootstrap.servers}")
-    private static String bootstrap_Servers;
+    private  String bootstrap_Servers;
 
     @Value(value = "${acks}")
-    private static String acks;
+    private  String acks;
 
     @Value(value = "${retries}")
-    private static String retries;
+    private  String retries;
 
     @Value(value = "${batch.size}")
-    private static String batch_size;
+    private  String batch_size;
 
     @Value(value = "${linger.ms}")
-    private static String linger_ms;
+    private  String linger_ms;
 
     @Value(value = "${buffer.memory}")
-    private static String buffer_memory;
+    private  String buffer_memory;
 
     @Value(value = "${key.serializer}")
-    private static String  key_serializer;
+    private  String  key_serializer;
 
     @Value(value = "${value.serializer}")
-    private static String  value_serializer;
+    private  String  value_serializer;
 
     @Bean
     public Properties properties(){
         Properties props=new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
-        props.put("acks", "all");
-        props.put("retries", 0);
-        props.put("batch.size", 16384);
-        props.put("linger.ms", 1);
-        props.put("buffer.memory", 33554432);
-        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("bootstrap.servers", bootstrap_Servers);
+        props.put("acks", acks);
+        props.put("retries",retries);
+        props.put("batch.size", batch_size);
+        props.put("linger.ms", linger_ms);
+        props.put("buffer.memory", buffer_memory);
+        props.put("key.serializer", key_serializer);
+        props.put("value.serializer", value_serializer);
         return  props;
     }
 
