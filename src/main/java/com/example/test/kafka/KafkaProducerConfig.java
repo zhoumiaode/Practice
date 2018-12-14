@@ -19,7 +19,7 @@ import java.util.Properties;
  * @ProjectName: test
  * @Package: com.example.test.kafka
  * @ClassName: KafkaProducerConfig
- * @Description: java类作用描述
+ * @Description: kafkaProducer配置Bean
  * @Author: zhoumiaode
  * @CreateDate: 2018/12/11 11:09
  * @UpdateUser: Neil.Zhou
@@ -68,6 +68,7 @@ public class KafkaProducerConfig {
         props.put("buffer.memory", buffer_memory);
         props.put("key.serializer", key_serializer);
         props.put("value.serializer", value_serializer);
+        String a="";
         return  props;
     }
 

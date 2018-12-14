@@ -16,7 +16,7 @@ import java.util.Properties;
  * @ProjectName: test
  * @Package: com.example.test.kafka
  * @ClassName: KafkaConsumerConfig
- * @Description: java类作用描述
+ * @Description: kafkaConsumer消费者Bean
  * @Author: zhoumiaode
  * @CreateDate: 2018/12/11 13:24
  * @UpdateUser: Neil.Zhou

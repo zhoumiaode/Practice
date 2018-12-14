@@ -4,6 +4,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.PartitionOffset;
 import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ import java.util.Optional;
  * @ProjectName: test
  * @Package: com.example.test.kafka
  * @ClassName: Listener
- * @Description: java类作用描述
+ * @Description: 监听器
  * @Author: zhoumiaode
  * @CreateDate: 2018/12/11 13:14
  * @UpdateUser: Neil.Zhou
@@ -27,7 +28,9 @@ import java.util.Optional;
  */
 @Component
 public class Listener {
+
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @KafkaListener(topicPartitions = {
             @TopicPartition(topic = "mythree",partitions = "1")
     })
@@ -37,5 +40,13 @@ public class Listener {
         logger.info("kafka的offset: " + record.offset());
         ack.acknowledge();
     }
+
+    @KafkaListener(topicPartitions = {
+            @TopicPartition(topic = "",partitions = ""),
+            @TopicPartition(topic = "",partitions = "",partitionOffsets ={@PartitionOffset(partition = "",initialOffset ="")})
+    })
+    public String a(){
+        return ";";
     }
+}
 

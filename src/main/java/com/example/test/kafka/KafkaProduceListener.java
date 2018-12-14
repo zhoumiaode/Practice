@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @ProjectName: test
  * @Package: com.example.test.kafka
  * @ClassName: KafkaProduceListener
- * @Description: java类作用描述
+ * @Description: 发送者回调
  * @Author: zhoumiaode
  * @CreateDate: 2018/12/11 11:29
  * @UpdateUser: Neil.Zhou
