@@ -21,7 +21,7 @@ import org.springframework.kafka.listener.MessageListener;
  */
 public class M implements org.springframework.kafka.listener.MessageListener<Integer, String> {
     public void onMessage(ConsumerRecord<Integer, String> consumerRecord) {
-
+        System.out.println("aa'");
         Object o = consumerRecord.value();
         System.out.println(String.valueOf(o));
     }
