@@ -1,6 +1,5 @@
 package com.example.test.controller;
 
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;

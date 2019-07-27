@@ -1,10 +1,11 @@
 package com.example.test.practice;
 
+import java.util.Date;
+
 public class Test1 {
 
     public static void main(String[] args){
-        String a ="hello";
-        String b="hello";
-        System.out.print(a==b);
+        Date date=new Date();
+        System.out.print(date.getTime());
     }
 }
